@@ -1,34 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Music app with next.js
 
-## Getting Started
+This is a mini copy of spotify music app that I created while learning next.js
 
-First, run the development server:
+## Main aspects learned
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Doing this app I learn the basics of next.js and manage to see how nice it is to have this backend/frontend all together in one place. I also liked the fact of everything is javascript (typescript in this case). I kinda like to work everything with javascript so **Node.js** for the backend and **React** for the frontend.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+It was also amazing to use some really good packages that I didnt' knew about and now I will probably use then in my future projects:
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Prisma
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Prisma is a typescript orm and to be honest it's amazing to use as we can have our model with custom types and we got auto completion and linting when using this types in the rest of the code.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Another amazing thing about prisma is the automatic migration tool that easily allow us to run migrations much more faster.
 
-## Learn More
+I also used a seed script to load data for development purposes so I only have good things to say regarding Prisma package.
 
-To learn more about Next.js, take a look at the following resources:
+### Easy-peasy
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Easy peasy is an app state manager like redux. The big difference comparing with redux is that easy peasy it's an abstraction of redux. It's smaller and let us having the best of state managment without having to do a lot of architecture code and boilerplate code. I used this to do the playing state part of the app but I enjoyed a lot to just create state and some actions and without a lot of code just having this global state managment. So I higly recommend it.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Chackra UI
 
-## Deploy on Vercel
+AS the purpose of this project was learn Next.js and not UI/UX, I use this Chackra UI package that allow us to use this prebuilded components that represent the majory of the html inputs. We have Boxes (div), Flex(div with flex) and all other components that allow us to build anything much more faster without having to take time to build this from the ground.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+It was not the first time that I used something like this, already used MUI from material ui, but this one was the best one for sure. It was really easy to build ui with it.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+I recommend and will use this chackra ui package for future projects when the ui is not the number one priority for the client as we can get the same result much more faster and we can focus on other developments.
+
+### Others
+
+We also use others packages that I already used on the past or I just didn't got so surprised to use them. Don't take me wrong, they are all amazing, it's just that I'm probably not that surprised using them as they are something normally used in development:
+
+    - bcrypt
+    - cookie
+    - jsonwebtoken
+    - swr
+
+## Run the app
+
+In order to run the app please download the source and run `yarn` so all the dependencies are installed.
+
+Then you need to create a database. Here I used a remote postgres database from heroku as it was way more simplier to configure this cloud database instead of installing postgres and configure all of that locally. But you can do both ways and it should work.
+
+I created 2 different postgres databases in heroku, one to be used and another to serve as shadow database (prisma ask for this), and then you just need to specify in `.env` both database urls.
+
+    ```
+        DATABASE_URL=""
+        SHADOW_DATABASE_URL=""
+    ```
+
+Then you just need to run `yarn dev` and everything should work
